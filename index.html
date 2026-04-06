@@ -14,12 +14,15 @@
         :root {
             --primary: #2563eb;
             --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
             --border: #e5e7eb;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
             --gray-600: #4b5563;
             --gray-700: #374151;
             --gray-900: #111827;
+            --red-50: #fef2f2;
+            --red-600: #dc2626;
         }
 
         body {
@@ -87,21 +90,67 @@
         .hero {
             max-width: 800px;
             margin: 0 auto;
-            padding: 5rem 1.5rem 4rem;
+            padding: 4rem 1.5rem 3rem;
             text-align: center;
         }
 
         .hero h1 {
             font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.1;
         }
 
-        .hero p {
+        .pain-point {
+            background: var(--red-50);
+            border-left: 4px solid var(--red-600);
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 700px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .pain-point h3 {
+            color: var(--red-600);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pain-point p {
+            color: var(--gray-700);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .solution {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 700px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .solution h3 {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .solution p {
+            color: var(--gray-700);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .hero p.subtitle {
             font-size: 1.25rem;
             color: var(--gray-600);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .features {
@@ -161,10 +210,10 @@
         }
 
         .filters {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
         }
 
         .filter-group {
@@ -186,7 +235,6 @@
             background: white;
             font-size: 0.95rem;
             cursor: pointer;
-            min-width: 160px;
         }
 
         select:focus {
@@ -198,6 +246,24 @@
             margin-bottom: 1.5rem;
             color: var(--gray-600);
             font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .clear-filters {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            color: var(--gray-700);
+            transition: all 0.2s;
+        }
+
+        .clear-filters:hover {
+            background: var(--gray-50);
         }
 
         .job-card {
@@ -231,6 +297,7 @@
         .company {
             color: var(--gray-600);
             font-size: 0.95rem;
+            margin-bottom: 0.5rem;
         }
 
         .company-logo {
@@ -243,6 +310,14 @@
             justify-content: center;
             font-weight: 700;
             color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .job-description {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
         .job-meta {
@@ -268,10 +343,23 @@
             font-weight: 500;
         }
 
-        .badge.finance { background: #dbeafe; color: #1e40af; }
-        .badge.marketing { background: #fce7f3; color: #9f1239; }
-        .badge.consulting { background: #e0e7ff; color: #4338ca; }
-        .badge.operations { background: #dcfce7; color: #166534; }
+        .badge.Finance { background: #dbeafe; color: #1e40af; }
+        .badge.Marketing { background: #fce7f3; color: #9f1239; }
+        .badge.Consulting { background: #e0e7ff; color: #4338ca; }
+        .badge.Operations { background: #dcfce7; color: #166534; }
+        .badge.HR { background: #fef3c7; color: #92400e; }
+        .badge.Sales { background: #fee2e2; color: #991b1b; }
+        .badge.Strategy { background: #ede9fe; color: #5b21b6; }
+        .badge.Accounting { background: #e0f2fe; color: #075985; }
+
+        .track-badge {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
 
         .cta-button {
             background: var(--primary);
@@ -289,17 +377,28 @@
             background: var(--primary-dark);
         }
 
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-600);
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
             
             .filters {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
 
-            select {
-                width: 100%;
+            .job-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .company-logo {
+                align-self: flex-start;
             }
         }
     </style>
@@ -318,23 +417,37 @@
     <!-- HOME PAGE -->
     <div id="home" class="page active">
         <div class="hero">
-            <h1>Finde dein perfektes Business Praktikum</h1>
-            <p>Alle Praktika von Top-Unternehmen für Business Admin Studenten – gefiltert nach Spezialisierung, Standort und mehr.</p>
+            <h1>Schluss mit dem Praktikums-Chaos</h1>
+            
+            <div class="pain-point">
+                <h3>😤 Das Problem</h3>
+                <p>Genug von fake Anzeigen, doppelten Einträgen und dem Durchwühlen von 1000 Werkstudentenjobs nur um ein einziges Praktikum zu finden. StepStone zeigt dir 500 irrelevante Ergebnisse und LinkedIn ist voll mit veralteten Duplikaten.</p>
+            </div>
+
+            <div class="solution">
+                <h3>✨ Die Lösung</h3>
+                <p>Nur aktuelle Praktika für Business-Studenten – vorgefiltert nach Spezialisierung, Track und Standort. Keine Werkstudentenjobs. Keine Festanstellungen. Kein Bullshit. Nur die besten Praktika von Top-Unternehmen in der DACH-Region.</p>
+            </div>
+
             <button class="cta-button" onclick="showPage('search')">Jetzt Praktikum finden</button>
         </div>
 
         <div class="features">
             <div class="feature">
-                <h3>🎯 Zielgerichtet</h3>
-                <p>Nur Praktika die wirklich für Business Admin Studenten relevant sind – keine irrelevanten Ergebnisse mehr.</p>
+                <h3>🎯 Nach Track filtern</h3>
+                <p>Big4, MBB, Investment Banking, Tech & AI, Defense – finde Praktika nach deinem Karriereweg.</p>
             </div>
             <div class="feature">
                 <h3>🏢 Top-Unternehmen</h3>
-                <p>Kuratierte Stellen von DAX-Konzernen, Big4, Beratungen und führenden Startups in der DACH-Region.</p>
+                <p>Kuratierte Stellen von DAX-Konzernen, Big4, Beratungen und führenden Startups.</p>
             </div>
             <div class="feature">
                 <h3>🔍 Smart gefiltert</h3>
-                <p>Finde genau das richtige Praktikum für deine Spezialisierung – Finance, Marketing, Consulting oder Operations.</p>
+                <p>Spezialisierung, Standort, Dauer, Start-Datum, Unternehmensgröße – finde genau was du suchst.</p>
+            </div>
+            <div class="feature">
+                <h3>⚡ Immer aktuell</h3>
+                <p>Wöchentlich aktualisiert, keine veralteten Anzeigen. Siehst du es hier, ist es noch verfügbar.</p>
             </div>
         </div>
     </div>
@@ -355,10 +468,13 @@
                     <label>Spezialisierung</label>
                     <select id="specializationFilter" onchange="filterJobs()">
                         <option value="">Alle</option>
-                        <option value="finance">Finance</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="consulting">Consulting</option>
-                        <option value="operations">Operations</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Track</label>
+                    <select id="trackFilter" onchange="filterJobs()">
+                        <option value="">Alle</option>
                     </select>
                 </div>
 
@@ -366,12 +482,6 @@
                     <label>Standort</label>
                     <select id="locationFilter" onchange="filterJobs()">
                         <option value="">Alle</option>
-                        <option value="München">München</option>
-                        <option value="Berlin">Berlin</option>
-                        <option value="Frankfurt">Frankfurt</option>
-                        <option value="Hamburg">Hamburg</option>
-                        <option value="Wien">Wien</option>
-                        <option value="Zürich">Zürich</option>
                     </select>
                 </div>
 
@@ -379,144 +489,92 @@
                     <label>Dauer</label>
                     <select id="durationFilter" onchange="filterJobs()">
                         <option value="">Alle</option>
-                        <option value="3">3 Monate</option>
-                        <option value="6">6 Monate</option>
-                        <option value="12">12 Monate</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Start-Datum</label>
+                    <select id="startDateFilter" onchange="filterJobs()">
+                        <option value="">Alle</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Unternehmensgröße</label>
+                    <select id="companySizeFilter" onchange="filterJobs()">
+                        <option value="">Alle</option>
                     </select>
                 </div>
             </div>
 
             <div class="results-header">
-                <span id="resultsCount">0</span> Praktika gefunden
+                <span><span id="resultsCount">0</span> Praktika gefunden</span>
+                <button class="clear-filters" onclick="clearFilters()">Filter zurücksetzen</button>
             </div>
 
-            <div id="jobsList"></div>
+            <div id="jobsList" class="loading">Lade Praktika...</div>
         </div>
     </div>
 
     <script>
-        const mockJobs = [
-            {
-                title: "Praktikant Finance & Controlling",
-                company: "Siemens AG",
-                location: "München",
-                specialization: "finance",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 2 Tagen",
-                url: "https://karriere.siemens.de"
-            },
-            {
-                title: "Marketing Praktikum - Digital Strategy",
-                company: "BMW Group",
-                location: "München",
-                specialization: "marketing",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 5 Tagen",
-                url: "https://jobs.bmw.de"
-            },
-            {
-                title: "Consulting Intern - Management Beratung",
-                company: "McKinsey & Company",
-                location: "Frankfurt",
-                specialization: "consulting",
-                duration: "3 Monate",
-                durationMonths: 3,
-                posted: "vor 1 Woche",
-                url: "https://careers.mckinsey.com"
-            },
-            {
-                title: "Investment Banking Praktikum",
-                company: "Deutsche Bank",
-                location: "Frankfurt",
-                specialization: "finance",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 3 Tagen",
-                url: "https://careers.db.com"
-            },
-            {
-                title: "Brand Management Internship",
-                company: "Beiersdorf AG",
-                location: "Hamburg",
-                specialization: "marketing",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 1 Tag",
-                url: "https://karriere.beiersdorf.de"
-            },
-            {
-                title: "Strategy Consulting Praktikum",
-                company: "BCG",
-                location: "Berlin",
-                specialization: "consulting",
-                duration: "3 Monate",
-                durationMonths: 3,
-                posted: "vor 4 Tagen",
-                url: "https://careers.bcg.com"
-            },
-            {
-                title: "Operations & Supply Chain Praktikant",
-                company: "Porsche AG",
-                location: "Stuttgart",
-                specialization: "operations",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 6 Tagen",
-                url: "https://jobs.porsche.com"
-            },
-            {
-                title: "Digital Marketing Internship",
-                company: "Zalando SE",
-                location: "Berlin",
-                specialization: "marketing",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 2 Tagen",
-                url: "https://jobs.zalando.com"
-            },
-            {
-                title: "Corporate Finance Praktikum",
-                company: "Allianz SE",
-                location: "München",
-                specialization: "finance",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 1 Woche",
-                url: "https://careers.allianz.com"
-            },
-            {
-                title: "Management Consulting Intern",
-                company: "Deloitte",
-                location: "Wien",
-                specialization: "consulting",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 3 Tage",
-                url: "https://careers.deloitte.at"
-            },
-            {
-                title: "Business Operations Praktikant",
-                company: "Google Switzerland",
-                location: "Zürich",
-                specialization: "operations",
-                duration: "12 Monate",
-                durationMonths: 12,
-                posted: "vor 5 Tagen",
-                url: "https://careers.google.com"
-            },
-            {
-                title: "M&A Advisory Praktikum",
-                company: "Rothschild & Co",
-                location: "Frankfurt",
-                specialization: "finance",
-                duration: "6 Monate",
-                durationMonths: 6,
-                posted: "vor 4 Tage",
-                url: "https://careers.rothschildandco.com"
+        let jobsData = null;
+
+        // Load jobs.json
+        async function loadJobs() {
+            try {
+                const response = await fetch('jobs.json');
+                jobsData = await response.json();
+                
+                // Populate filter dropdowns
+                populateFilters();
+                
+                // Initial display
+                filterJobs();
+            } catch (error) {
+                document.getElementById('jobsList').innerHTML = 
+                    '<p style="text-align: center; color: var(--red-600); padding: 3rem;">Fehler beim Laden der Praktika. Stelle sicher, dass jobs.json im selben Ordner liegt.</p>';
             }
-        ];
+        }
+
+        function populateFilters() {
+            const filters = jobsData.filters;
+            
+            // Specializations
+            const specSelect = document.getElementById('specializationFilter');
+            filters.specializations.forEach(spec => {
+                specSelect.innerHTML += `<option value="${spec}">${spec}</option>`;
+            });
+
+            // Tracks
+            const trackSelect = document.getElementById('trackFilter');
+            filters.tracks.forEach(track => {
+                trackSelect.innerHTML += `<option value="${track}">${track}</option>`;
+            });
+
+            // Locations
+            const locationSelect = document.getElementById('locationFilter');
+            filters.locations.forEach(loc => {
+                locationSelect.innerHTML += `<option value="${loc}">${loc}</option>`;
+            });
+
+            // Durations
+            const durationSelect = document.getElementById('durationFilter');
+            filters.durations.forEach(dur => {
+                durationSelect.innerHTML += `<option value="${dur}">${dur}</option>`;
+            });
+
+            // Start dates
+            const startDateSelect = document.getElementById('startDateFilter');
+            filters.start_dates.forEach(date => {
+                startDateSelect.innerHTML += `<option value="${date}">${date}</option>`;
+            });
+
+            // Company sizes
+            const companySizeSelect = document.getElementById('companySizeFilter');
+            filters.company_sizes.forEach(size => {
+                companySizeSelect.innerHTML += `<option value="${size}">${size}</option>`;
+            });
+        }
 
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -525,28 +583,50 @@
             document.getElementById(page).classList.add('active');
             event.target.classList.add('active');
 
-            if (page === 'search') {
+            if (page === 'search' && jobsData) {
                 filterJobs();
             }
         }
 
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('specializationFilter').value = '';
+            document.getElementById('trackFilter').value = '';
+            document.getElementById('locationFilter').value = '';
+            document.getElementById('durationFilter').value = '';
+            document.getElementById('startDateFilter').value = '';
+            document.getElementById('companySizeFilter').value = '';
+            filterJobs();
+        }
+
         function filterJobs() {
+            if (!jobsData) return;
+
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const specialization = document.getElementById('specializationFilter').value;
+            const track = document.getElementById('trackFilter').value;
             const location = document.getElementById('locationFilter').value;
             const duration = document.getElementById('durationFilter').value;
+            const startDate = document.getElementById('startDateFilter').value;
+            const companySize = document.getElementById('companySizeFilter').value;
 
-            const filtered = mockJobs.filter(job => {
+            const filtered = jobsData.jobs.filter(job => {
                 const matchesSearch = !searchTerm || 
                     job.title.toLowerCase().includes(searchTerm) ||
                     job.company.toLowerCase().includes(searchTerm) ||
-                    job.location.toLowerCase().includes(searchTerm);
+                    job.location.toLowerCase().includes(searchTerm) ||
+                    job.description.toLowerCase().includes(searchTerm);
                 
                 const matchesSpecialization = !specialization || job.specialization === specialization;
+                const matchesTrack = !track || job.track === track;
                 const matchesLocation = !location || job.location === location;
-                const matchesDuration = !duration || job.durationMonths.toString() === duration;
+                const matchesDuration = !duration || job.duration === duration;
+                const matchesStartDate = !startDate || job.start_date === startDate;
+                const matchesCompanySize = !companySize || job.company_size === companySize;
 
-                return matchesSearch && matchesSpecialization && matchesLocation && matchesDuration;
+                return matchesSearch && matchesSpecialization && matchesTrack && 
+                       matchesLocation && matchesDuration && matchesStartDate && 
+                       matchesCompanySize;
             });
 
             renderJobs(filtered);
@@ -569,9 +649,14 @@
                         <div style="flex: 1;">
                             <div class="job-title">${job.title}</div>
                             <div class="company">${job.company}</div>
+                            <div style="margin-top: 0.5rem;">
+                                <span class="badge ${job.specialization}">${job.specialization}</span>
+                                <span class="track-badge">${job.track}</span>
+                            </div>
                         </div>
                         <div class="company-logo">${job.company.substring(0, 2).toUpperCase()}</div>
                     </div>
+                    <div class="job-description">${job.description}</div>
                     <div class="job-meta">
                         <div class="meta-item">
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -592,15 +677,22 @@
                                 <circle cx="12" cy="12" r="10"/>
                                 <path d="M12 6v6l4 2"/>
                             </svg>
-                            ${job.posted}
+                            Start: ${job.start_date}
                         </div>
-                        <span class="badge ${job.specialization}">${job.specialization.charAt(0).toUpperCase() + job.specialization.slice(1)}</span>
+                        <div class="meta-item">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="15" rx="2"/>
+                                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+                            </svg>
+                            ${job.company_size.split(' ')[0]}
+                        </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        filterJobs();
+        // Load jobs on page load
+        loadJobs();
     </script>
 </body>
 </html>
